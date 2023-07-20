@@ -11,7 +11,7 @@ class Dialogo extends HTMLDialogElement{
     }
 
     #iteraryAsignar(objeto, target){
-        Object.keys(obj).forEach(llave => {
+        Object.keys(objeto).forEach(llave => {
             if(typeof objeto[llave] === 'object' && objeto[llave] !== null){
                 if(llave === "style"){
                     this.aplicarPropiedades(objeto[llave], this.style)
@@ -19,7 +19,7 @@ class Dialogo extends HTMLDialogElement{
                 }
                 this.#iteraryAsignar(objeto[llave], target[llave]);
             }
-            target[llave] = obj[llave];
+            target[llave] = objeto[llave];
         })
     }
 
@@ -81,7 +81,6 @@ class Dialogo extends HTMLDialogElement{
     }
 
 }
-
 customElements.define("gd-tag", Dialogo, {extends: 'dialog'});
 
 const grid = new Dialogo({hola : 'Profe'})
